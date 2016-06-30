@@ -67,7 +67,7 @@ int main()
     // Partie 2 creéation du fichier html
 
     // Génération du chemin pour le fopen
-    char pathBase[100] = "C:\\Users\\philippe\\Documents\\test2\\";
+    char pathBase[100] = "";
     strcat(pathBase, nomComicsAvecUnderscore);
     strcat(pathBase, ".html");
 
@@ -110,6 +110,7 @@ int main()
             fprintf(fichier,".png\"/> </br>\n");
         // Ecriture du footer de la page
 
+        fprintf(fichier, "\n");
         fprintf(fichier, "<a id=\"Down\" class=\"lien\" href=\"#Top\" > Top of page </a>\n");
         fprintf(fichier, "</p>\n");
         fprintf(fichier, "</section>\n");
