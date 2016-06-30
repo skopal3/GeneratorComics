@@ -40,6 +40,14 @@ int lire(char *chaine, int longueur)
         return 0; // On renvoie 0 s'il y a eu une erreur
     }
 }
+void viderBuffer()
+{
+    int c = 0;
+    while (c != '\n' && c != EOF)
+    {
+        c = getchar();
+    }
+}
 int main()
 {
     // Partie une on demande les info
@@ -91,7 +99,7 @@ int main()
         fprintf(fichier, "    <h1><a class=\"lien2\" href=\"Yiffy_Home_Index.html\"> Yiffy Home</a></br>\n");
         fprintf(fichier, "    </header>\n");
         fprintf(fichier, "\n");
-        fprintf(fichier, "    <section id=\"Cats_tongue\">\n");
+        fprintf(fichier, "    <section id=\"%s\">\n", nomComicsAvecUnderscore);
         fprintf(fichier, "    <h2>%s</h2>\n", nomComicsSansUnderscore);
         fprintf(fichier, "    <p>\n");
         fprintf(fichier, "    <a id=\"Top\" class=\"lien\" href=\"#Down\" > Down of Page </a></br>\n");
@@ -101,11 +109,11 @@ int main()
 
         for (compteur = 0 ; compteur < nombrePage-1 ; compteur++)
         {
-            fprintf(fichier,"    <img src=\"Contenu/Yiff/Cats_tongue/Cats_tongue");
+            fprintf(fichier,"    <img src=\"Contenu/Yiff/%s/%s", nomComicsAvecUnderscore, nomComicsAvecUnderscore);
             fprintf(fichier,"%d", compteur+1);
             fprintf(fichier,".png\"/> </br></br></br></br>\n");
         }
-            fprintf(fichier,"    <img src=\"Contenu/Yiff/Cats_tongue/Cats_tongue");
+            fprintf(fichier,"    <img src=\"Contenu/Yiff/%s/%s",nomComicsAvecUnderscore, nomComicsAvecUnderscore);
             fprintf(fichier,"%d", compteur+1);
             fprintf(fichier,".png\"/> </br>\n");
         // Ecriture du footer de la page
@@ -120,7 +128,7 @@ int main()
 
         fclose(fichier); // On ferme le fichier qui a été ouvert
     }
-
+    viderBuffer();
     return 0;
 
 }
